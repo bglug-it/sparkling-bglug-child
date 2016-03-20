@@ -24,6 +24,10 @@ p.ecs-excerpt {
   margin: 2em 0;
 }
 
+.ecs-event .duration {
+  font-weight: bold;
+}
+
 /* Patch vivus.js to also fill areas */
 
 .vivus svg.finished * {
