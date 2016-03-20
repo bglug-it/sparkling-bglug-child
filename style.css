@@ -16,6 +16,10 @@
   display: none;
 }
 
+#secondary .widget {
+  color: #808080
+}
+
 /* Patch vivus.js to also fill areas */
 
 .vivus svg.finished * {
