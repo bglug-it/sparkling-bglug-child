@@ -17,7 +17,11 @@
 }
 
 #secondary .widget {
-  color: #808080
+  color: #808080;
+}
+
+p.ecs-excerpt {
+  margin: 2em 0;
 }
 
 /* Patch vivus.js to also fill areas */
