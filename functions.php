@@ -40,7 +40,7 @@ function sparkling_featured_slider() {
 
 
 function sparkling_header_menu() {
-  if (is_home()) {
+  if ( is_front_page() ) {
     echo '<div onclick="location.href=\'/\';" class="pull-left vivus" style="cursor: pointer; cursor: hand; padding: 10px 0; height: 70px; width: 150px;" id="bglogo"></div>';
     echo '<script>
     var logo = new Vivus("bglogo", {
@@ -52,7 +52,7 @@ function sparkling_header_menu() {
     });
     </script>';
   } else {
-    echo '<a href="/" rel="home" class="pull-left"><img style="padding: 10px 0; height: 70px; width: 150px;" id="bglogo" src="'. get_bloginfo('stylesheet_directory') .'/images/full-logo.svg"></img></a>';
+    echo '<a href="/" class="pull-left"><img style="padding: 10px 0; height: 70px; width: 150px;" id="bglogo" src="'. get_bloginfo('stylesheet_directory') .'/images/full-logo.svg"></img></a>';
   }
 
 
