@@ -21,12 +21,24 @@ add_filter('widget_text', 'do_shortcode');
 
 
 // put something at the beginning of the main
-function addto_loop_start( $query ) {
+register_sidebar( array (
+    'name'          => 'Home Main Loop',
+    'id'            => 'home_main_loop',
+    'before_widget' => '<div>',
+    'after_widget'  => '</div>',
+    'before_title'  => '<h2 class="rounded">',
+    'after_title'   => '</h2>',
+) );
+
+function home_loop_start( $query ) {
   if ( is_front_page() ) {
-    echo do_shortcode("[metaslider id=1369]");
+    if ( is_active_sidebar('home_main_loop') ) {
+      dynamic_sidebar('home_main_loop');
+    }
   }
 }
-add_action( 'loop_start', 'addto_loop_start' );
+
+add_action( 'loop_start', 'home_loop_start' );
 
 
 // disable sparkling slider
