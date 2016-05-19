@@ -6,38 +6,18 @@ function theme_enqueue_styles() {
 
 add_filter('widget_text', 'do_shortcode');
 
-function sparkling_featured_slider() {
-  if ( is_front_page() && of_get_option( 'sparkling_slider_checkbox' ) == 1 ) {
-    echo '<div class="container">';
-      echo '<div class="flexslider">';
-        echo '<ul class="slides">';
-
-          $count = of_get_option( 'sparkling_slide_number' );
-          $slidecat =of_get_option( 'sparkling_slide_categories' );
-
-          $query = new WP_Query( array( 'cat' =>$slidecat,'posts_per_page' =>$count ) );
-          if ($query->have_posts()) :
-            while ($query->have_posts()) : $query->the_post();
-
-            echo '<li><a href="'. get_permalink() .'">';
-              if ( (function_exists( 'has_post_thumbnail' )) && ( has_post_thumbnail() ) ) :
-                echo get_the_post_thumbnail();
-              endif;
-
-                echo '<div class="flex-caption">';
-                    if ( get_the_title() != '' ) echo '<h2 class="entry-title">'. get_the_title().'</h2>';
-                    if ( get_the_excerpt() != '' ) echo '<div class="excerpt">' . get_the_excerpt() .'</div>';
-                echo '</div>';
-                echo '</a></li>';
-                endwhile;
-              endif;
-
-        echo '</ul>';
-      echo ' </div>';
-    echo ' </div>';
+function addto_loop_start( $query ) {
+  if ( is_front_page() ) {
+    echo do_shortcode("[metaslider id=1369]");
   }
-} /* end sparkling_featured_slider */
+}
 
+add_action( 'loop_start', 'addto_loop_start' );
+
+// disable sparkling slider
+if ( ! function_exists( 'sparkling_featured_slider' ) ) :
+function sparkling_featured_slider() { }
+endif;
 
 function sparkling_header_menu() {
   if ( is_front_page() ) {
