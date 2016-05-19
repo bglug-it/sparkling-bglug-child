@@ -1,14 +1,14 @@
 <?php
 
 
-// add style.css to css for the page
+//////////////////// add style.css to css for the page /////////////////////////
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
 function theme_enqueue_styles() {
   wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
 }
 
 
-// add the vivus js (to animate logos)
+//////////////////// add the vivus js (to animate logos) ///////////////////////
 add_action('wp_enqueue_scripts', 'load_javascript_files');
 function load_javascript_files() {
   wp_register_script('vivus.js', get_bloginfo('stylesheet_directory').'/js/vivus.min.js', array('jquery'), true );
@@ -16,11 +16,11 @@ function load_javascript_files() {
 }
 
 
-// execute shortcodes in widget text
+//////////////////// execute shortcodes in widget text /////////////////////////
 add_filter('widget_text', 'do_shortcode');
 
 
-// put something at the beginning of the main
+//////////////////// put something at the beginning of the main ////////////////
 register_sidebar( array (
     'name'          => 'Home Main Loop',
     'id'            => 'home_main_loop',
@@ -41,13 +41,13 @@ function home_loop_start( $query ) {
 add_action( 'loop_start', 'home_loop_start' );
 
 
-// disable sparkling slider
+//////////////////// disable sparkling slider //////////////////////////////////
 if ( ! function_exists( 'sparkling_featured_slider' ) ) :
 function sparkling_featured_slider() { }
 endif;
 
 
-// display the logo in the header menu
+//////////////////// display the logo in the header menu ///////////////////////
 function sparkling_header_menu() {
   if ( is_front_page() ) {
     echo '<div onclick="location.href=\'/\';" class="pull-left vivus" style="cursor: pointer; cursor: hand; padding: 10px 0; height: 70px; width: 150px;" id="bglogo"></div>';
