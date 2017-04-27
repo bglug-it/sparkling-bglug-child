@@ -78,4 +78,22 @@ function sparkling_header_menu() {
   ));
 }
 
+
+//////////////////// load font-awesome ///////////////////////
+add_action('wp_enqueue_scripts', 'enqueue_font_awesome');
+function enqueue_font_awesome() {
+  wp_enqueue_style('font-awesome', 'http://netdna.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css');
+}
+
+
+//////////////////// super-lightweight share buttons (requires font-awesome) ///////////////////////
+add_filter ('the_content', 'append_sharebox');
+function append_sharebox($content) {
+  if(is_single()) {
+    $content .= file_get_contents(__DIR__ . '/sharebox.html');
+  }
+  return $content;
+}
+
+
 ?>
