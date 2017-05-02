@@ -82,7 +82,7 @@ function sparkling_header_menu() {
 //////////////////// load font-awesome ///////////////////////
 add_action('wp_enqueue_scripts', 'enqueue_font_awesome');
 function enqueue_font_awesome() {
-  wp_enqueue_style('font-awesome', 'http://netdna.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css');
+  wp_enqueue_style('font-awesome', '//netdna.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css');
 }
 
 
