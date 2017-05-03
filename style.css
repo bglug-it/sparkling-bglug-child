@@ -124,3 +124,11 @@ ul.share-buttons .sr-only {
   width: 1px;
   overflow: hidden;
 }
+
+.next.page-numbers {
+  float: none !important;
+}
+
+.prev.page-numbers {
+  float: none !important;
+}
